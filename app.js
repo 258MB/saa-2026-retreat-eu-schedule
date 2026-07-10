@@ -378,7 +378,10 @@ function renderStatus() {
   elements.zoomButton.classList.toggle("is-live", isLiveNow);
   elements.zoomButton.textContent = isLiveNow ? "Join Zoom — live now" : "Join Zoom";
 
-  if (isLiveNow || !nextLive) {
+  const nextIsTheLiveOne = status.next && nextLive
+    && status.next.start.getTime() === nextLive.start.getTime();
+
+  if (isLiveNow || !nextLive || nextIsTheLiveOne) {
     elements.nextLiveNote.hidden = true;
   } else {
     elements.nextLiveNote.hidden = false;
