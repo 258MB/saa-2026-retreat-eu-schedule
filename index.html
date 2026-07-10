@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0a0c14">
+    <script>
+      (() => {
+        let tone = "bright";
+        try {
+          tone = localStorage.getItem("saa-eu-tone") === "dim" ? "dim" : "bright";
+        } catch (_) { /* storage unavailable is fine */ }
+        document.documentElement.dataset.tone = tone;
+      })();
+    </script>
+    <title>SAA Online Retreat — European Schedule</title>
+    <meta
+      name="description"
+      content="European-adjusted live schedule for the Simply Always Awake Online Retreat, July 8-12 2026, shown in your local time."
+    >
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="retreat-title">
+        Simply Always Awake Online Retreat
+        <span class="eu-badge">European Edition</span>
+      </p>
+      <p class="retreat-dates">July 8–12, 2026</p>
+    </header>
+
+    <div class="tone-control" role="group" aria-label="Page brightness">
+      <button type="button" data-tone="bright" aria-pressed="true">Bright</button>
+      <button type="button" data-tone="dim" aria-pressed="false">Dim</button>
+    </div>
+
+    <main>
+      <section id="timer" class="live-panel" aria-labelledby="current-title">
+        <p id="status-label" class="section-label">Happening now</p>
+        <h1 id="current-title">Loading…</h1>
+        <p id="current-window" class="current-window"></p>
+
+        <div class="countdown-wrap">
+          <p id="countdown" class="countdown" role="timer" aria-atomic="true">--</p>
+          <p id="countdown-note" class="countdown-note">
+            until <strong id="next-title">the next session</strong>
+            <span id="next-window"></span>
+          </p>
+        </div>
+
+        <p id="next-live-note" class="next-live-note" hidden>
+          Next <span class="live-dot" aria-hidden="true"></span><strong>live</strong> session:
+          <strong id="next-live-title"></strong>
+          <span id="next-live-window"></span>
+        </p>
+
+        <div class="zoom-wrap">
+          <a
+            id="zoom-button"
+            class="zoom-button"
+            href="https://us02web.zoom.us/w/88562983998?tk=PFH4rLKxsaL_sitwVndQDwu6VWH1oKA4qGXiCDR_v1s.DQkAAAAUnsPkPhZzY1dxa0RtcVRYQzktdlRXOEEtelFnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&pwd=fBl836N744TCHAbys6r95zNfZ0nHYl.1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Join Zoom</a>
+          <p class="zoom-fallback">
+            Link not working?
+            <a
+              href="https://us02web.zoom.us/meeting/register/WjWP0EIXSlGyAUkN-fTQpQ"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Re-register here</a>
+            to get your own by email.
+          </p>
+        </div>
+
+        <a class="jump-link" href="#schedule">Explore the schedule <span aria-hidden="true">↓</span></a>
+      </section>
+
+      <section id="schedule" class="schedule-panel" aria-labelledby="schedule-title">
+        <a class="jump-link" href="#timer">Return to timer <span aria-hidden="true">↑</span></a>
+
+        <div class="schedule-heading">
+          <h2 id="schedule-title">Choose a day</h2>
+          <p id="source-note" class="source-note"></p>
+        </div>
+
+        <div id="day-tabs" class="day-tabs" role="tablist" aria-label="Retreat days"></div>
+        <div id="day-panel" class="day-panel" role="tabpanel" aria-live="polite"></div>
+
+        <div class="legend">
+          <span><span class="badge badge-live">LIVE</span> on Zoom, join in real time</span>
+          <span><span class="badge badge-rec">REPLAY</span> recording of the previous day</span>
+          <span>Unmarked = self-guided, in your own space</span>
+        </div>
+
+        <p class="schedule-footnote">
+          Live sessions follow the retreat's US clock; everything else follows the
+          European-adjusted schedule. All times are shown in
+          <strong id="local-zone-label"></strong>. Self-guided rounds are suggestions —
+          adjust to your comfort.
+        </p>
+      </section>
+
+      <section id="links" class="links-panel" aria-labelledby="links-title">
+        <h2 id="links-title">Retreat links</h2>
+        <ul class="links-list">
+          <li><a href="https://docs.google.com/document/d/1LZxrHj_p0mK7T1zZXEG3Q7QwGBH938wBPR4TbvM_2wo/edit" target="_blank" rel="noopener noreferrer">Main retreat doc</a></li>
+          <li><a href="https://docs.google.com/document/d/1oblM3f3K2wN3qiJZohKkGhhkI2cn7WCLJmfJHr6yAaI/edit" target="_blank" rel="noopener noreferrer">Shared doc (questions, poetry, connect)</a></li>
+          <li><a href="https://docs.google.com/document/d/1rkIvPc6x3rBdop8l-StP5VZ-79uowX2yZBSSRTDqC5E/edit" target="_blank" rel="noopener noreferrer">Recordings list</a></li>
+          <li><a href="https://docs.google.com/document/d/1hzSW0RvpXJhz23D_tJhXqwmy3iUXC9c1ewjMR-QVagw/edit" target="_blank" rel="noopener noreferrer">European schedule doc</a></li>
+          <li><a href="https://www.google.com/maps/d/u/0/viewer?mid=1ZzySLJURuUl3bzsVa3RlJYuOS9TfVWc" target="_blank" rel="noopener noreferrer">World map of attendees</a></li>
+          <li><a href="https://sonified.github.io/saa-2026-retreat-schedule/" target="_blank" rel="noopener noreferrer">US-schedule version of this page</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <dialog id="recording-dialog" class="recording-dialog" aria-labelledby="recording-dialog-title" tabindex="-1">
+      <div class="recording-dialog-header">
+        <h2 id="recording-dialog-title">Session recording</h2>
+        <form method="dialog">
+          <button class="recording-dialog-close" type="submit" aria-label="Close video">
+            <span aria-hidden="true">×</span>
+          </button>
+        </form>
+      </div>
+      <div id="recording-mount" class="recording-mount"></div>
+    </dialog>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
