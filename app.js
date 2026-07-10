@@ -391,7 +391,6 @@ function renderStatus() {
   }
 
   elements.sourceNote.innerHTML = `Times shown in <strong>${localTimeZone}</strong>`;
-  elements.localZoneLabel.textContent = localTimeZone;
   updateDayTabs(currentDayIndex);
   updateHighlights(status, now);
 }
